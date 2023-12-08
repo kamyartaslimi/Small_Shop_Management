@@ -1,0 +1,10 @@
+.link-button{
+    text-decoration: none;
+    padding: 8px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: 0 8px;
+}
+.active{
+    background-color: #eee;
+}

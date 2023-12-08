@@ -1,0 +1,19 @@
+@font-face {
+    font-family: "lalezar";
+    src: url('./assets/fonts/Lalezar.ttf');
+    font-family: "yekan";
+    src: url('./assets/fonts/Yekan.ttf');
+}
+h1 , h2 ,h3{
+    /* font-family: "lalezar"; */
+    font-family: 'yekan';
+}
+.nav-link active{
+    font-family: "lalezar";
+}
+a , th{
+    font-family: "yekan";
+}
+td{
+    font-family: "lalezar";
+}

@@ -1,0 +1,12 @@
+.header-box-title{
+    position: relative;
+}
+.closeBtn-close{
+    position: absolute;
+    left: 10px;
+    z-index: 2;
+    color: #ffff;
+    background: red;
+    padding: 5px;
+    cursor: pointer;
+}

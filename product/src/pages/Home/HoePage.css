@@ -1,0 +1,28 @@
+.contaienr-header-homePage{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14vh;
+    flex-wrap: wrap;
+
+}
+.input-search{
+    border-radius: 8px;
+    padding: 5px;
+}
+.container-search span {
+    cursor: pointer;
+    margin: 0 8px;
+    background-color: #0b5ed7;
+    color: #ffff;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.containderAllerts{
+    max-height: 52vh;
+    overflow: auto;
+    border-radius: 30px;
+    padding: 50px;
+    box-shadow: inset 10px 10px 21px 0px rgba(0,0,0,0.39), inset -10px -10px 21px 0px rgba(255,255,255,0.49);
+}
