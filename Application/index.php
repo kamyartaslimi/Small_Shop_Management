@@ -69,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 return array_map(function($Convertor) {
                     $Convertor->RemainTime = ToolsTime::CheckTimeAgo($Convertor->CheckDate) ? $Convertor->RemainTime : 0 ;
                     $Convertor->CheckDate = ToolsTime::GregorianToJalali($Convertor->CheckDate);
+                    $Convertor->CheckPrice = rtrim(rtrim(number_format($Convertor->CheckPrice , 10 , '.' , ',') , 0), '.');
                     return $Convertor;},
                     $DateArray);}
             ));
