@@ -1,8 +1,8 @@
 import { Button } from "react-bootstrap";
 import "./AddNotifCheck.css";
 import Table from "react-bootstrap/Table";
-import { useState } from "react";
-import axios, { spread } from "axios";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import MyNavbar from "../../../components/MyNavbar/MyNavbar";
@@ -12,11 +12,17 @@ import MyNavbar from "../../../components/MyNavbar/MyNavbar";
 
 function AddNotifCheck(e) {
   const [checkData, setCheckData] = useState({});
-  const [dated, setDated] = useState("");
+
   const navigate = useNavigate();
+  const [texts , setTexts] =useState('')
 
+  useEffect(() => {
+    setCheckData({
+      ...checkData,
+      CheckPrice: Number(texts),
+    });
+  }, [texts]);
 
-const [texts , setTexts] =useState('')
 
   const chaneInputHandler = (e) => {
 
@@ -27,20 +33,23 @@ const [texts , setTexts] =useState('')
     
   };
   const chaneInputHandlerPrice = (e)=>{
+    setTexts(e.target.value)
     setCheckData({
       ...checkData,
-      [e.target.name]:  numberWithCommas(texts),
+      [e.target.name]:  Number(texts),
     });
+    // console.log(texts);
+    // console.log(e.target.value);
+    // console.log(checkData);
   }
 
   const addCheckHandler = () => {
-    // console.log(checkData);
-    // checkData.PostAction = "CreateCheck";
+  
     axios
       .post("http://localhost:8000/Application/index.php", { ...checkData  ,PostAction : "CreateCheck" })
       .then((response) => {
         // console.log(response.data);
-        if (response.data.status === 201) {
+        if (response.data.Status === 201) {
           Swal.fire({
             // icon: 'tue',
             text: "چک ایجاد شد",
@@ -147,14 +156,9 @@ numberWithCommas(texts)
               <input
                 type="number"
                 name="CheckPrice"
-                id=""
+                value={texts}
                 placeholder="2.300.000"
                 onChange={chaneInputHandlerPrice}
-                onKeyDown={(e) => {
-
-                  setTexts(e.target.value);
-
-                }}
               />
             </td>
             <td>
