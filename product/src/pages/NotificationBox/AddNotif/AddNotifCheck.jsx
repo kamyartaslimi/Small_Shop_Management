@@ -38,9 +38,6 @@ function AddNotifCheck(e) {
       ...checkData,
       [e.target.name]:  Number(texts),
     });
-    // console.log(texts);
-    // console.log(e.target.value);
-    // console.log(checkData);
   }
 
   const addCheckHandler = () => {
@@ -48,7 +45,6 @@ function AddNotifCheck(e) {
     axios
       .post("http://localhost:8000/Application/index.php", { ...checkData  ,PostAction : "CreateCheck" })
       .then((response) => {
-        // console.log(response.data);
         if (response.data.Status === 201) {
           Swal.fire({
             // icon: 'tue',
@@ -89,7 +85,6 @@ numberWithCommas(texts)
      
 
       <hr />
-      {/* #1 */}
       <Table striped bordered hover>
         <thead>
           <tr>
