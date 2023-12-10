@@ -112,14 +112,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ));
             break;
     }
-}
-else if($_SERVER['REQUEST_METHOD'] == 'PUT'){
+}elseif($_SERVER['REQUEST_METHOD'] == 'PUT'){
     var_dump($Request_Body);
     $Product = new Product($Request_Body['Name'], $Request_Body['Price'], $Request_Body['Inventory'], $Request_Body['ProductPosition'] , $Request_Body['InventoryAlarm'] , $_GET['id']);
     $ProductOperation = new ProductOperation();
     echo JsonConverter::Response($ProductOperation->Update($Product));
-}
-else if ($_SERVER['REQUEST_METHOD'] == 'PATCH'){
+}elseif ($_SERVER['REQUEST_METHOD'] == 'PATCH'){
     if ($Request_Body['PatchAction'] == 'ProductReturn') {
         $ProductOperation = new ProductOperation();
         $ID = $Request_Body['id'];
@@ -131,8 +129,7 @@ else if ($_SERVER['REQUEST_METHOD'] == 'PATCH'){
                 ['Inventory' => $ProductOperation->Update($Product , ProductOperation::$Update_Obj)->Data->Inventory, 'Message' => $Request_Body['Inventory']. ' عدد محصول اضافه شد'],
                 200 , 'UpdateSuccessfully'));
         }
-    }
-    else if ($Request_Body['PatchAction'] == 'ProductSell') {
+    } else if ($Request_Body['PatchAction'] == 'ProductSell') {
         $ProductOperation = new ProductOperation();
         $ID = $Request_Body['id'];
         $ProductData = $ProductOperation->ReadByID($ID , PDO::FETCH_ASSOC)->JsonToArray()['Data'];
@@ -144,9 +141,7 @@ else if ($_SERVER['REQUEST_METHOD'] == 'PATCH'){
                 200 , 'UpdateSuccessfully'));
         }
     }
-}
-
-else if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
+}elseif($_SERVER['REQUEST_METHOD'] == 'DELETE'){
     switch ($Request_Body['DeleteAction']) {
         case 'DeleteProduct':
             $ProductOperation = new ProductOperation();
