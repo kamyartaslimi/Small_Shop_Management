@@ -3,7 +3,6 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET,POST,PUT,PATCH,DELETE');
 header('Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers');
 
-
 use API\MySQL\Operation\CheckOperation;
 use API\MySQL\Operation\ProductOperation;
 use API\JsonTools\JsonConverter;
