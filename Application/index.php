@@ -72,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     return $Convertor;},
                     $DateArray);}
             ));
+            
             break;
         case "SetDataToCalculate":
             $SellProductOperation = new SellProductOperation();
