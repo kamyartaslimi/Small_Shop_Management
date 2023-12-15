@@ -11,6 +11,6 @@ class JsonData implements JsonRequestFormat
     }
     public function JsonToArray(): array
     {
-        return ['Status' => $this->Status_Code, 'Message' => $this->Status_Message, 'Data' => $this->Data];
+        return ((array)['Status' => $this->Status_Code, 'Message' => $this->Status_Message, 'Data' => $this->Data]);
     }
 }
