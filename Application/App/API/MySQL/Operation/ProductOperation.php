@@ -27,11 +27,20 @@ class ProductOperation
     public function Create(Product $Data): JsonRequestFormat
     {
         if (!in_array(false, $Data->NullChecker())) {
-            $ResultQuery = $this->DBConnection->prepare(/** @lang text */ "insert into Products (`Name` , `Price` , `Inventory` , `InventoryAlarm` , `ProductPosition`) VALUE (:Name , :Price , :Inventory , :InventoryAlarm , :ProductPosition)");
-            $DataList = $Data->ListConvertor();
-            $ResultQuery->execute($DataList);
-            if ($ResultQuery->rowCount() == 1) {
-                return (JsonData::CreatRequest('افزودن کالا با موفقیت انجام شد', 201, 'CreateSuccessfully'));
+            $SqlConnection = $this->DBConnection;
+            $SQLData = $SqlConnection->prepare(/** @lang text */ "SELECT * FROM `Products` where `Name` = :Name");
+            $SQLData->bindParam(":Name", $Data->Name);
+            $SQLData->execute();
+            if ($SQLData->rowCount() == 0) {
+                $ResultQuery = $this->DBConnection->prepare(/** @lang text */ "insert into Products (`Name` , `Price` , `Inventory` , `InventoryAlarm` , `ProductPosition`) VALUE (:Name , :Price , :Inventory , :InventoryAlarm , :ProductPosition)");
+                $DataList = $Data->ListConvertor();
+                $ResultQuery->execute($DataList);
+                if ($ResultQuery->rowCount() == 1) {
+                    return (JsonData::CreatRequest('افزودن کالا با موفقیت انجام شد', 201, 'CreateSuccessfully'));
+                }
+            }
+            else {
+                return (JsonData::CreatRequest('این محصول از قبل وجود دارد', 201, 'NameAlreadyExist'));
             }
         }
         return  (JsonData::CreatRequest('فیلد های ضروری را پر کنید', 400, 'error'));
