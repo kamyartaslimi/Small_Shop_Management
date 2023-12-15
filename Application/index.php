@@ -19,7 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     switch ($Request_Body['PostAction']) {
         case 'PostProductToCreate':
-            $Product = new Product($Request_Body['Name'], $Request_Body['Price'], $Request_Body['Inventory'], $Request_Body['ProductPosition'], $Request_Body['InventoryAlarm']);
+            $Product = null;
+            if (count($Request_Body) > 5){
+                $Product = new Product($Request_Body['Name'], $Request_Body['Price'], $Request_Body['Inventory'], $Request_Body['ProductPosition'], $Request_Body['InventoryAlarm']);
+            }
+            elseif(count($Request_Body) == 5){
+                $Product = new Product($Request_Body['Name'], $Request_Body['Price'], $Request_Body['Inventory'], $Request_Body['ProductPosition'], 0);
+            }
+            unset($Request_Body);
             $ProductOperation = new ProductOperation();
             echo JsonConverter::Response($ProductOperation->Create($Product));
             break;

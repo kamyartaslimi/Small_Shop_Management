@@ -10,23 +10,14 @@ import { useNavigate } from 'react-router-dom';
 function AddProduct(){
     const [productData, setProductData] = useState({});
     const navigate = useNavigate();
-    
-//   const resetform = () => {
-//     setProductData({
-//       name: "",
-//       price: "",
-//       loc: "",
-//       inventory: ""
-//     });
-//   };
-    
+
+
   const chingeInput = (e) => {
     if(e.target.type === "number"){
       setProductData({
         ...productData,
           [e.target.name]: Number(e.target.value),
         });
-        // console.log(e.target.value);
 
     }else{
 
@@ -44,8 +35,7 @@ function AddProduct(){
       productData.PostAction = "PostProductToCreate";
         axios.post("http://localhost:8000/Application/index.php", productData)
         .then( response => {
-          // console.log(response.data);
-        
+
           if(response.data.Status === 201){
             Swal.fire({
               // icon: 'tue',
@@ -58,7 +48,7 @@ function AddProduct(){
             })
           }
         //   go to home page navigate
-          navigate('/')
+           navigate('/')
         })
         .catch(error =>{
           Swal.fire({
@@ -69,7 +59,6 @@ function AddProduct(){
             icon : 'error'
           })
         })
-        // resetform();
     }else{
         Swal.fire({
             icon: "error",
