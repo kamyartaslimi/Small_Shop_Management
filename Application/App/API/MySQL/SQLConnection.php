@@ -12,7 +12,7 @@ class SQLConnection extends PDO
     {
         try {
             parent::__construct("mysql:host=localhost:3306;dbname=LocStoreManagement", "root", "06585806");
-            $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);      
         } catch (Exception $e) {
             JsonConverter::Response(JsonData::CreatRequest('اتصال به دیتابیس با خطا مواجه شد، متن خطا : ' . $e, 404, 'SQLFiledConnection'));die;
         }

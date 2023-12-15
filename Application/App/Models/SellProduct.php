@@ -10,11 +10,7 @@ SellProduct
 
     public function ListConvertor(): array
     {
-        return [
-            'id' => $this->id,
-            'Name' => $this->Name,
-            'Price' => $this->Price,
-            'Inventory' => $this->Inventory];
+        return array('id' => $this->id, 'Name' => $this->Name, 'Price' => $this->Price, 'Inventory' => $this->Inventory);
     }
 
     public function NullChecker(): array
