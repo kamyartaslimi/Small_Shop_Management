@@ -1,6 +1,4 @@
-<?php
-
-namespace API\JsonTools;
+<?php namespace API\JsonTools;
 
 interface JsonRequestFormat
 {
