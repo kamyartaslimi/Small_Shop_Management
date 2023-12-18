@@ -41,7 +41,7 @@ function AddNotifCheck(e) {
   }
 
   const addCheckHandler = () => {
-  
+
     axios
       .post("http://localhost:8000/Application/index.php", { ...checkData  ,PostAction : "CreateCheck" })
       .then((response) => {
@@ -59,8 +59,6 @@ function AddNotifCheck(e) {
         navigate("/notificationBox/check");
       });
   };
-
-
 
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
