@@ -45,7 +45,7 @@ function AddNotifCheck(e) {
     axios
       .post("http://localhost:8000/Application/index.php", { ...checkData  ,PostAction : "CreateCheck" })
       .then((response) => {
-        if (response.data.Status === 201) {
+        if (response.data.Status === (201)) {
           Swal.fire({
             // icon: 'tue',
             text: "چک ایجاد شد",
